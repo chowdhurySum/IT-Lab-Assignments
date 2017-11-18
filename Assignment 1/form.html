@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function validateEmail(email_input) {
+			var mailformat=/\w+([\.-]?\w+)*@[a-z]+[\.][a-z]+/;
+			if (mailformat.test(email_input.value))  
+			{  
+				return true;  
+			}
+			else{	  
+				alert("Invalid E-mail");  
+				return false;
+			}  
+		}
+		function validateFName(name,flag){
+			var bug=/^[a-zA-Z]+$/;
+			if(name.value.trim()==""&&flag)
+				alert("First name can not be empty");
+			else{
+				if(bug.test(name.value.trim()))
+				{
+					document.getElementById('error_fname').innerHTML="";
+					return true;
+				}
+				else{
+					document.getElementById('error_fname').innerHTML="  This entry is invalid";
+					return false;
+				}
+			}
+		}
+		function validateLName(name,flag){
+			var bug=/^[a-zA-Z]+$/;
+			if(name.value.trim()==""&&flag)
+				alert("Last name can not be empty");
+			else{	
+				if(bug.test(name.value.trim()))
+				{
+					document.getElementById('error_lname').innerHTML="";
+					return true;
+				}
+				else{
+					document.getElementById('error_lname').innerHTML="  This entry is invalid";
+					return false;
+				}
+			}
+		}
+		function selectOption(){
+			if(document.getElementById('tsize').value.length==0||document.getElementById('tcolor').value.length==0)
+			{
+				document.getElementById('error_select').innerHTML="  You have to choose an option";
+				return false;
+			}
+			else{
+				document.getElementById('error_select').innerHTML="";
+				return true;
+			}
+		}
+		
+		function validatePhone(phone)
+		{
+			var bug=/^[\d]{11}$/;
+			if(bug.test(phone.value))
+			{
+				document.getElementById('error_phone').innerHTML="";
+				return true;
+			}
+			else{
+				document.getElementById('error_phone').innerHTML=" Enter as 0&ltyour 10 digit phone no.&gt";
+				return false;
+			}
+		}
+		function emptyAddress(){ 
+			if(document.getElementById('address').value.trim()=="")
+			{
+				alert("Address can not be empty");
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		function selectSex()
+		{
+			if(document.getElementById('msex').checked)
+			{}
+			else{
+				if(document.getElementById('fsex').checked)
+				{}
+				else{
+					
+					alert("Select sex");
+				}
+			}
+		}
+		/*
+		function seeOff()
+		{
+			var size=document.getElementById(tsize).value;
+			var color=document.getElementById(tcolor).value;
+			var email=document.getElementById(email_in).value;
+			alert("thank you");
+			//alert("Thank you for visit\n"+"You have ordered a "+size+" "+color+" t-shirt\n"+"Details of order is sent to "+email);
+			return true;
+		}
+		*/
+	</script>
+	
+	
+</head>
+<body>
+	<h1>Order Your T-Shirt</h1>
+	<form name="tshirt" id="tshirt" onsubmit="return !! ( validateEmail(email_in) & validateFName(fname,1) & validateLName(lname,1) & selectOption() & validatePhone(phone) & emptyAddress() & selectSex() );">
+	<fieldset>
+    <legend style="font-size:20px">Enter Information</legend>
+	<br>
+	<table>
+	<tr>
+		<td>	
+		First Name &nbsp
+		</td>
+		<td>
+		<input type="text" id="fname" name="firstname" size="20" onblur="validateFName(fname,0)"/><span id="error_fname"></span>
+		</td>
+	</tr>
+	<tr>	
+		<td>
+		<br>
+		Last Name &nbsp 
+		</td>
+		<td>
+		<br>
+		<input type="text" id="lname" name="lastname" size="20" onblur="validateLName(lname,0)"/><span id="error_lname"></span>
+		</td>
+	</tr>
+	<table>
+	<br>
+	<input type="radio" id="msex" name="sex" value="male" > Male
+	<input type="radio" id="fsex" name="sex" value="female"> Female
+	<br><br>
+	<table>
+	<tr>
+	T-Shirt Size &nbsp
+    <select id="tsize" name="tsize">
+	<option></option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+    <option value="extra large">Extra Large</option>
+    </select> &nbsp &nbsp &nbsp
+    T-Shirt Color &nbsp
+    <select id="tcolor" name="tcolor">
+	<option></option>
+    <option value="black">Black</option>
+    <option value="white">White</option>
+    <option value="purple">Purple</option>
+    <option value="red">Red</option>
+    </select>
+	<span id="error_select"></span>
+    </tr>
+	</table>
+	<!--<button type="button" onclick="selectOption();">validate</button>-->
+	
+	<br>
+	<table>
+	<tr>
+	<td>
+	E-mail
+	</td>
+	<td>
+	<input type="text" id="email_in" size="40"/>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<br>Phone
+	</td>
+	<td>
+	<br><input type="text" name="phone" maxlength="11" onblur="validatePhone(phone)"><span id="error_phone"></span>
+	</td>
+	</tr>
+	</table>
+	<br>
+	Address:<br>
+	<textarea id="address" name="address" rows="4" cols="66" placeholder="Your order will be couriered. So, provide correct postal address." ></textarea> 
+	<br><br>
+	</fieldset>
+	<br>
+	<button type="submit" form="tshirt" value="Submit">Submit</button>
+	<!--<input type="submit" id="submit"/>-->
+	&nbsp &nbsp
+	<input type="reset"/>
+	</form>
+	
+</body>
+</html>
+
