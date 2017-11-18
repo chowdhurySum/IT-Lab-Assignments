@@ -14,4 +14,15 @@
 11. Write to a file using Applet - FileOp/FileW.java & FileW.html
 
 
+##### Run Applet the following way
+
+first 
+```
+$ javac filename.java
+```
+then
+```
+$ appletviewer filename.html
+```
+
 
