@@ -1,0 +1,3 @@
+This is a text file.
+This file is read using an Applet.
+Have a nice day.
